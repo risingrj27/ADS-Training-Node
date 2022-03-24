@@ -1,12 +1,19 @@
 {
   "name": "nord-farm",
   "version": "1.0.0",
-  "description": "",
+  "description": "Learning Node.js",
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon api.js"
   },
   "author": "ADS",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "slugify": "^1.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
