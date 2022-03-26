@@ -1,0 +1,2 @@
+output
+ this is what we know about programming : This is my first program to read
