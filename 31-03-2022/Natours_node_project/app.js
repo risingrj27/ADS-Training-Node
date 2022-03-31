@@ -1,11 +1,12 @@
 const morgan = require('morgan');
 const express = require('express');
+const app = express();
 const userRouter = require('./routes/userRoutes');
 const tourRouter = require('./routes/tourRoutes');
 
-const app = express();
-
+if(process.env.NODE_ENV === 'development'){
 app.use(morgan('dev'));
+}
 app.use(express.json()); // it is basically a middle ware to handle the req and res data
 // creating middleware
 // app.use((req, res, next) => {
