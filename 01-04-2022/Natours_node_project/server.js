@@ -8,7 +8,7 @@ mongoose.connect(DB,{
   useNewUrlParser:true,
   // useCreateIndex:true,
   // useFindAndModify:false
-}).then(con=>{ console.log("DB connection successfull")
+}).then(con=>{ console.log("DB connection successfull", con.connections);
 })
 // console.log(process.env.NODE_ENV);
 // console.log(app.get('production'))
