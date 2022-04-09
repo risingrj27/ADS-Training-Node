@@ -1,4 +1,4 @@
-const fs = require('fs');
+// const fs = require('fs');
 const Tour = require('../models/tourModels')
 
 /*const tours = JSON.parse(
@@ -16,15 +16,15 @@ exports.checkID = (req, res, next, val) => {
   next();
 };
 
-exports.checkBody = (req, res, next) => {
-  if (!req.body.name || !req.body.price) {
-    return res.status(404).json({
-      status: 'fail',
-      message: 'you doesnt have name and price',
-    });
-  }
-  next();
-};
+// exports.checkBody = (req, res, next) => {
+//   if (!req.body.name || !req.body.price) {
+//     return res.status(404).json({
+//       status: 'fail',
+//       message: 'you doesnt have name and price',
+//     });
+//   }
+//   next();
+// };
 
 exports.getAllTours = (req, res) => {
   //   console.log(req.requestTime);
@@ -59,10 +59,13 @@ exports.getTour = (req, res) => {
   });
 };
 
-exports.createTour = (req, res) => {
+exports.createTour = async (req, res) => {
   // const newId = tours[tours.length - 1].id + 1;
   // const tour = Object.assign({ id: newId }, req.body);
-  // //   console.log(req.body);
+  //   console.log(req.body);
+
+  // const newTour = new Tour({});
+  // newTour.save();
 
   // tours.push(tour);
 
@@ -76,9 +79,19 @@ exports.createTour = (req, res) => {
   //     });
   //   }
   // );
+
+  const newTour = await Tour.create(req.body);
   res.status(201).json({
     status : 'success',
-  });
+    data: {
+      tour : newTour
+    }
+  }).catch(err) {
+    res.status(400).json({
+      status : 'Error',
+      message : err
+    });
+  }
 };
 
 exports.updateTour = (req, res) => {
